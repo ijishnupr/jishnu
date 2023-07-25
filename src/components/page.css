@@ -1,0 +1,101 @@
+.video{
+  width: 100%;
+  margin:0px;
+}
+
+
+.hei{
+  height: 100vh;
+  background-color: black;
+  color:#FFECD1;
+
+}
+.head h2{
+  font-size: 300px;
+
+  font-family:monospace;
+  
+}
+@media (width<1136px) {
+  .head h2{
+    margin-top: 30px;
+    font-size: 250px;
+  }
+  
+}
+@media (width<994px) {
+  .head h2{
+    margin-top: 180px;
+    font-size: 200px;}
+}
+@media (width<789px) {
+  .head h2{
+    margin-top: 200px;
+    font-size: 150px;
+  }
+  
+}
+@media (width<584px) {
+  .head h2{
+    margin-top: 200px;
+    font-size: 100px;
+  }
+  
+}
+@media (width<371px) {
+  .head h2{
+    margin-top: 90px;
+    font-size: 80px;
+  }
+  
+}
+@media (width<304px) {
+  .head h2{
+    margin-top: 100px;
+    font-size: 50px;
+  }
+  
+}
+
+
+
+#spin:after {
+  content: "";
+  position: absolute;
+  animation: trans 6s linear infinite;
+}
+
+
+@keyframes trans {
+  0%, 40.5% {
+    transform: translateY(0%);
+    content: 'Jishnu';
+    opacity: 1;
+  }
+  
+  41.5%, 42% {
+    transform: translateY(-12%);
+    content: 'Jishnu';
+    opacity: 0;
+  }
+  
+  42.5%, 90% {
+    transform: translateY(0%);
+    content: 'Web Dev';
+    opacity: 1;
+  }
+  
+  90.5%, 91% {
+    transform: translateY(12%);
+    content: 'Jishnu';
+    opacity: 0;
+  }
+  
+  91.5%, 100% {
+    transform: translateY(0%);
+    content: 'Jishnu';
+    opacity: 1;
+  }
+}
+
+  
