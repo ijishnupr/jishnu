@@ -2,7 +2,7 @@ import { Fragment } from "react";
 function About() {
 
     return <Fragment>
-        <div className="container">
+        <div className="container-fluid height">
             <div className="row">
                 <div className="col mt-5">
                     <p className="small text-center">who ?</p>
@@ -11,9 +11,9 @@ function About() {
                         <div className="about" >
                             <p className="mt-5">
 
-                                Hello! I'm Jishnu pr, i'm a 21 years old aspiring Web Developer. I am driven by my 
-                                passion for web development. I am constantly exploring new technologies and seeking knowledge to become a skilled 
-                                web developmer. I am horning my skills and gaining valuable experience in the field of 
+                                Hello! I'm Jishnu pr, i'm a 21 years old aspiring Web Developer driven by my 
+                                passion for web development and constantly exploring new technologies and seeking knowledge to become a skilled 
+                                web developer. I'm horning my skills and gaining valuable experience in the field of 
                                 computer science. 
                             </p>
 

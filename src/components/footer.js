@@ -1,5 +1,4 @@
 
-
 function Footer(){
     return  <div className="container-fluid foocolor mt-5">
     

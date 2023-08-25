@@ -3,6 +3,9 @@ body{
   background-color: black;
   color: white;
 }
+.height{
+  height: 100vh;
+}
 .box {
   transition: box-shadow .3s;
   

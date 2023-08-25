@@ -28,9 +28,11 @@ function Skills() {
                 <div className="col  box">
                     <h3>Tools</h3>
                     <ul>
-                        <li>GIT</li>
+                        <li>Git</li>
                         <li>MYSQL</li>
                         <li>npm</li>
+                        <li>Figma</li>
+                        <li>Sass</li>
                     </ul>
                 </div>
             </div>

@@ -16,7 +16,7 @@ function App() {
    <Skills/>
   <Projects/>
    <Contactme/>
-   <p style={{textAlign:'center',paddingTop:'60px'}}>Thank you for scroll till end :)</p>
+   <p style={{textAlign:'center',paddingTop:'60px'}}>Thank you for scrolling till end :)</p>
    <Footer/>
   </Fragment>
   
