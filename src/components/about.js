@@ -1,11 +1,12 @@
 import { Fragment } from "react";
+import resume from './img/resume.pdf'
 function About() {
     const handleDownload = () => {
-        const resumeFilePath = './img/resume.pdf';
+        ;
 
     // Create a new anchor element
     const anchor = document.createElement('a');
-    anchor.href = resumeFilePath;
+    anchor.href = resume;
     anchor.target = '_blank'; // Open in a new tab
     anchor.download = 'resume.pdf'; // File name to be downloaded as
 

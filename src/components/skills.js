@@ -33,6 +33,7 @@ function Skills() {
                         <li>npm</li>
                         <li>Figma</li>
                         <li>Sass</li>
+                        <li>Docker</li>
                     </ul>
                 </div>
             </div>
