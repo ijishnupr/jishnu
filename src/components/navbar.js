@@ -30,12 +30,16 @@ function Header() {
                 <li className="nav-item">
                   <a className='nav-link text-white small'>HOME</a>
                 </li>
+                <li>
+                    <a href='#expeirence' className='nav-link text-white small'>EXPERIENCE</a>
+                </li>
                 <li className="nav-item">
                   <a href='#project' className='nav-link text-white small'>PROJECT</a>
                 </li>
                 <li className="nav-item">
                     <a href='#contact' className='nav-link text-white small'>CONTACT</a>
                </li>
+
             </ul>
         </div>
     </nav>;
