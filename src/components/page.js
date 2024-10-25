@@ -30,7 +30,7 @@ function Page() {
         </div>
       </div>
       <div className='col d-none d-md-block'>
-        <img className='vid' src={img} alt='img'></img>
+        {/* <img className='vid' src={img} alt='img'></img> */} 
       </div>
 
     </div>
