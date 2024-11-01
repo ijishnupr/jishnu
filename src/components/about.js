@@ -36,8 +36,8 @@ function About() {
                             <p className="mt-5">
                                 <Fade>
 
-                                    Hello! I'm Jishnu pr, i'm a 22 years old aspiring Web Developer driven by my
-                                    passion for web development and constantly exploring new technologies and seeking knowledge to become a skilled
+                                    Hello! I'm Jishnu pr, i'm a 22 years old aspiring Software Developer driven by my
+                                    passion for Software development and constantly exploring new technologies and seeking knowledge to become a skilled
                                     web developer. I'm horning my skills and gaining valuable experience in the field of
                                     computer science.
                                 </Fade>
@@ -48,6 +48,7 @@ function About() {
 
 
                         </div>
+                        
 
 
                         <button className="btn btn-outline-light small mt-5" onClick={handleDownload} handleDownload><small>download resume</small></button>

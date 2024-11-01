@@ -29,7 +29,7 @@ function App() {
    <About/>
    <Skills/>
    <Experience/>
-  <Projects/>
+  {/* <Projects/> */}
    <Contactme/>
    <p style={{textAlign:'center',paddingTop:'60px'}}>Thank you for scrolling till end :)</p>
    <Footer/>
