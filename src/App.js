@@ -27,11 +27,13 @@ function App() {
         <About />
         <Skills />
         <Experience />
+        
         <Projects />
         <Contact />
       </main>
       <Footer />
     </>
+    
   );
 }
 
