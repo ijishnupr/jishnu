@@ -1,41 +1,38 @@
-
 import './App.css';
-import { Fragment } from 'react';
-import Page from './components/page';
+import AnimatedCursor from 'react-animated-cursor';
+import Navbar from './components/navbar';
+import Hero from './components/page';
 import About from './components/about';
 import Skills from './components/skills';
-import Contactme from './components/contactme';
-import Footer from './components/footer';
-import Projects from './components/projects';
 import Experience from './components/experience';
-import AnimatedCursor from "react-animated-cursor"
+import Projects from './components/projects';
+import Contact from './components/contactme';
+import Footer from './components/footer';
 
 function App() {
-  return <Fragment>
-    <AnimatedCursor
-    innerSize={8}          
-    outerSize={25}         
-    innerScale={1}         
-    outerScale={2}         
-    innerAlpha={1}         
-    outerAlpha={0}
-    hasBlendMode={true}
-    outerStyle={{
-      border: '3px solid white'
-    }}
-    color='255, 255, 255'
-    />
-   <Page/>
-   <About/>
-   <Skills/>
-   <Experience/>
-  {/* <Projects/> */}
-   <Contactme/>
-   <p style={{textAlign:'center',paddingTop:'60px'}}>Thank you for scrolling till end :)</p>
-   <Footer/>
-  </Fragment>
-  
- 
+  return (
+    <>
+      <AnimatedCursor
+        innerSize={7}
+        outerSize={32}
+        innerScale={1}
+        outerScale={1.5}
+        outerAlpha={0}
+        innerStyle={{ backgroundColor: '#00d4ff' }}
+        outerStyle={{ border: '1.5px solid rgba(0,212,255,0.6)', backgroundColor: 'transparent' }}
+      />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  );
 }
 
 export default App;
