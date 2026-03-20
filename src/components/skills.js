@@ -95,9 +95,7 @@ export default function Skills() {
           variants={fadeUp}
         >
           <p className="section-tag">Expertise</p>
-          <h2 className="section-title">
-            Technical <span className="gradient-text">Skills</span>
-          </h2>
+          <h2 className="section-title">Technical Skills</h2>
         </motion.div>
 
         <div className="skills-grid">

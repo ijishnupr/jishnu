@@ -56,37 +56,26 @@ export default function Hero() {
 
   return (
     <section className="hero" id="home">
-      {/* Animated background */}
       <div className="hero-bg">
         <div className="grid-overlay" />
         <div className="orb orb-1" />
         <div className="orb orb-2" />
-        <div className="orb orb-3" />
       </div>
 
       <div className="hero-content">
-        {/* Available badge */}
-        <motion.div {...fadeUp(0.1)}>
-          <div className="hero-badge">
-            <span className="hero-badge-dot" />
-            Open to new opportunities
-          </div>
-        </motion.div>
-
         {/* Name */}
-        <motion.h1 className="hero-name" {...fadeUp(0.2)}>
+        <motion.h1 className="hero-name" {...fadeUp(0.15)}>
           JISHNU PR
         </motion.h1>
 
         {/* Typewriter role */}
-        <motion.div className="hero-role-wrap" {...fadeUp(0.3)}>
-          <span className="hero-role-prefix">{'> '}</span>
+        <motion.div className="hero-role-wrap" {...fadeUp(0.28)}>
           {role}
           <span className="hero-cursor" />
         </motion.div>
 
         {/* Summary */}
-        <motion.p className="hero-summary" {...fadeUp(0.4)}>
+        <motion.p className="hero-summary" {...fadeUp(0.38)}>
           Senior Backend Developer with <strong>3+ years</strong> building production-grade systems
           across accounting software and health-tech. Deep expertise in{' '}
           <strong>FastAPI</strong>, <strong>Django</strong>, and <strong>AWS</strong> — driving
@@ -94,7 +83,7 @@ export default function Hero() {
         </motion.p>
 
         {/* CTAs */}
-        <motion.div className="hero-cta" {...fadeUp(0.5)}>
+        <motion.div className="hero-cta" {...fadeUp(0.48)}>
           <a href="#contact" className="btn-primary">
             <i className="fas fa-paper-plane" /> Get In Touch
           </a>
@@ -104,7 +93,7 @@ export default function Hero() {
         </motion.div>
 
         {/* Stats */}
-        <motion.div className="hero-stats" {...fadeUp(0.65)}>
+        <motion.div className="hero-stats" {...fadeUp(0.58)}>
           {STATS.map(s => (
             <div className="hero-stat" key={s.label}>
               <span className="hero-stat-value">
@@ -123,11 +112,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="scroll-indicator">
-        <div className="scroll-line" />
-        <span className="scroll-label">Scroll</span>
-      </div>
     </section>
   );
 }

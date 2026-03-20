@@ -56,9 +56,7 @@ export default function Contact() {
           variants={fadeUp}
         >
           <p className="section-tag">Get In Touch</p>
-          <h2 className="section-title">
-            Let's <span className="gradient-text">Connect</span>
-          </h2>
+          <h2 className="section-title">Let's Connect</h2>
         </motion.div>
 
         <div className="contact-grid">

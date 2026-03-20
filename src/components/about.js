@@ -29,9 +29,7 @@ export default function About() {
           variants={fadeUp}
         >
           <p className="section-tag">Who I Am</p>
-          <h2 className="section-title">
-            About <span className="gradient-text">Me</span>
-          </h2>
+          <h2 className="section-title">About Me</h2>
         </motion.div>
 
         <div className="about-grid">

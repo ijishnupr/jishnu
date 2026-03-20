@@ -55,9 +55,7 @@ export default function Projects() {
           variants={fadeUp}
         >
           <p className="section-tag">What I've Built</p>
-          <h2 className="section-title">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
+          <h2 className="section-title">Featured Projects</h2>
         </motion.div>
 
         <div className="projects-grid">

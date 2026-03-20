@@ -69,9 +69,7 @@ export default function Experience() {
           variants={fadeUp}
         >
           <p className="section-tag">Where I've Worked</p>
-          <h2 className="section-title">
-            Work <span className="gradient-text">Experience</span>
-          </h2>
+          <h2 className="section-title">Work Experience</h2>
         </motion.div>
 
         {/* Experience timeline */}
