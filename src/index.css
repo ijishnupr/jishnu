@@ -216,81 +216,123 @@ button { cursor: pointer; font-family: var(--font-body); }
 }
 
 /* ============================================================
-   NAVBAR — Apple macOS frosted bar
+   NAVBAR — Apple floating glass pill
    ============================================================ */
 .navbar {
   position: fixed;
-  top: 0;
+  top: 18px;
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 20px 0;
-  transition: padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s;
-  border-bottom: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* transparent region passes clicks through */
 }
 
-.navbar.scrolled {
-  padding: 12px 0;
-  background: var(--glass-nav);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom-color: var(--border);
-}
-
-.navbar-inner {
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: var(--container-x);
+/* The pill itself */
+.navbar-pill {
+  pointer-events: all;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(18, 18, 20, 0.72);
+  backdrop-filter: blur(48px) saturate(200%);
+  -webkit-backdrop-filter: blur(48px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--r-pill);
+  box-shadow:
+    0 0 0 0.5px rgba(255,255,255,0.04) inset,
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-logo {
   font-family: var(--font-heading);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-primary);
   text-decoration: none;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
+  padding: 4px 10px;
+  white-space: nowrap;
 }
 
+/* Thin vertical separator */
+.navbar-divider {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+/* Links list */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 36px;
+  gap: 2px;
   list-style: none;
+  padding: 0 2px;
+}
+
+/* Each link wrapper — needed for the sliding pill */
+.navbar-link-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* The magic-move sliding background pill */
+.navbar-link-bg {
+  position: absolute;
+  inset: -4px -6px;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.09);
+  z-index: 0;
 }
 
 .navbar-link {
-  font-size: 0.88rem;
+  position: relative;
+  z-index: 1;
+  font-size: 0.84rem;
   font-weight: 400;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color var(--dur);
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  transition: color 0.2s var(--ease);
+  white-space: nowrap;
   letter-spacing: -0.1px;
 }
 
-.navbar-link:hover { color: var(--text-primary); }
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--text-primary);
+}
 
+/* Resume pill button */
 .navbar-cta {
-  font-size: 0.86rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--accent);
   background: var(--accent-dim);
   border: 1px solid var(--accent-border);
-  padding: 7px 20px;
+  padding: 6px 16px;
   border-radius: var(--r-pill);
   text-decoration: none;
-  transition: background var(--dur), transform var(--dur) var(--ease);
+  transition: background 0.2s, transform 0.2s var(--ease);
+  white-space: nowrap;
+  margin-left: 2px;
 }
 
 .navbar-cta:hover {
-  background: rgba(41, 151, 255, 0.16);
-  transform: scale(1.03);
+  background: rgba(41, 151, 255, 0.18);
+  transform: scale(1.04);
   color: var(--accent);
 }
 
+/* Scroll progress bar */
 .scroll-progress-bar {
   position: fixed;
   top: 0;
@@ -299,57 +341,57 @@ button { cursor: pointer; font-family: var(--font-body); }
   background: var(--accent);
   z-index: 1001;
   transform-origin: left;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
+/* Mobile hamburger — hidden on desktop */
 .nav-mobile-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   background: none;
   border: none;
-  padding: 4px;
+  padding: 6px;
   cursor: pointer;
+  margin-left: 4px;
 }
 
 .nav-mobile-toggle span {
   display: block;
-  width: 22px;
+  width: 20px;
   height: 1.5px;
   background: var(--text-secondary);
   border-radius: 2px;
   transition: all 0.3s var(--ease);
 }
 
-.nav-mobile-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-mobile-toggle.open span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
 .nav-mobile-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.nav-mobile-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-mobile-toggle.open span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
 
+/* Mobile full-screen overlay */
 .nav-mobile-menu {
-  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(48px) saturate(180%);
+  -webkit-backdrop-filter: blur(48px) saturate(180%);
   z-index: 999;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 36px;
-  list-style: none;
+  gap: 12px;
 }
-
-.nav-mobile-menu.open { display: flex; }
 
 .nav-mobile-link {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
-  transition: color var(--dur);
-  letter-spacing: -0.5px;
+  transition: color 0.2s;
+  letter-spacing: -0.8px;
 }
 .nav-mobile-link:hover { color: var(--accent); }
 
@@ -1179,8 +1221,9 @@ button { cursor: pointer; font-family: var(--font-body); }
     --container-x: 0 24px;
   }
 
-  .navbar-links { display: none; }
-  .navbar-cta { display: none; }
+  .navbar-links    { display: none; }
+  .navbar-cta      { display: none; }
+  .navbar-divider  { display: none; }
   .nav-mobile-toggle { display: flex; }
 
   .hero-stat { padding-right: 24px; margin-right: 24px; margin-bottom: 20px; }
