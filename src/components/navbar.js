@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import resume from './img/resume.pdf';
 
@@ -12,10 +12,12 @@ const LINKS = [
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [hovered, setHovered]       = useState(null);
   const [active, setActive]         = useState('');
+  // pill: { left, width } — always in DOM, opacity driven by hovering
+  const [pill, setPill]             = useState({ left: 0, width: 0, visible: false });
+  const ulRef                       = useRef(null);
 
-  /* scroll progress bar */
+  /* scroll progress */
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
@@ -27,7 +29,7 @@ export default function Navbar() {
       if (!el) return null;
       const obs = new IntersectionObserver(
         ([entry]) => { if (entry.isIntersecting) setActive(id); },
-        { threshold: 0.35 }
+        { threshold: 0.3 }
       );
       obs.observe(el);
       return obs;
@@ -35,49 +37,61 @@ export default function Navbar() {
     return () => observers.forEach(o => o?.disconnect());
   }, []);
 
+  const handleEnter = (e) => {
+    const li = e.currentTarget;
+    setPill({ left: li.offsetLeft, width: li.offsetWidth, visible: true });
+  };
+
+  const handleLeave = () => {
+    setPill(p => ({ ...p, visible: false }));
+  };
+
   return (
     <>
-      {/* Thin scroll-progress line */}
+      {/* Scroll progress line */}
       <motion.div className="scroll-progress-bar" style={{ scaleX }} />
 
-      {/* Floating pill */}
+      {/* Floating pill navbar */}
       <header className="navbar">
         <motion.div
           className="navbar-pill"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
         >
           {/* Logo */}
           <a href="#home" className="navbar-logo">Jishnu PR</a>
 
-          {/* Divider */}
           <span className="navbar-divider" />
 
-          {/* Links with magic-move hover pill */}
+          {/* Links — single pill slides under hovered item */}
           <ul
+            ref={ulRef}
             className="navbar-links"
-            onMouseLeave={() => setHovered(null)}
+            onMouseLeave={handleLeave}
           >
+            {/* The sliding pill — always mounted, opacity/position animated */}
+            <motion.span
+              className="navbar-hover-pill"
+              animate={{
+                opacity:  pill.visible ? 1 : 0,
+                left:     pill.left,
+                width:    pill.width,
+              }}
+              transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            />
+
             {LINKS.map(link => {
-              const isActive = active === link.href.slice(1);
+              const id = link.href.slice(1);
               return (
                 <li
                   key={link.label}
-                  className="navbar-link-wrap"
-                  onMouseEnter={() => setHovered(link.label)}
+                  className="navbar-link-item"
+                  onMouseEnter={handleEnter}
                 >
-                  {/* Sliding background pill */}
-                  {hovered === link.label && (
-                    <motion.span
-                      className="navbar-link-bg"
-                      layoutId="nav-hover"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.38 }}
-                    />
-                  )}
                   <a
                     href={link.href}
-                    className={`navbar-link${isActive ? ' active' : ''}`}
+                    className={`navbar-link${active === id ? ' active' : ''}`}
                     onClick={() => setMobileOpen(false)}
                   >
                     {link.label}
@@ -87,7 +101,6 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Divider */}
           <span className="navbar-divider" />
 
           {/* Resume CTA */}
@@ -95,7 +108,7 @@ export default function Navbar() {
             Resume
           </a>
 
-          {/* Mobile toggle */}
+          {/* Mobile hamburger */}
           <button
             className={`nav-mobile-toggle${mobileOpen ? ' open' : ''}`}
             onClick={() => setMobileOpen(o => !o)}
@@ -106,24 +119,24 @@ export default function Navbar() {
         </motion.div>
       </header>
 
-      {/* Mobile full-screen menu */}
+      {/* Mobile overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             className="nav-mobile-menu"
-            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.25 }}
           >
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '32px' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px' }}>
               {LINKS.map((link, i) => (
                 <motion.li
                   key={link.label}
-                  initial={{ opacity: 0, y: 24 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 12 }}
-                  transition={{ delay: i * 0.06, duration: 0.35 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: i * 0.06, duration: 0.3 }}
                 >
                   <a
                     href={link.href}
@@ -139,10 +152,10 @@ export default function Navbar() {
               href={resume}
               download="Jishnu_PR_Resume.pdf"
               className="btn-primary"
-              style={{ marginTop: '16px' }}
+              style={{ marginTop: '20px' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.35 }}
+              transition={{ delay: 0.32 }}
               onClick={() => setMobileOpen(false)}
             >
               Download Resume

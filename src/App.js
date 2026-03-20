@@ -18,8 +18,8 @@ function App() {
         innerScale={1}
         outerScale={1.5}
         outerAlpha={0}
-        innerStyle={{ backgroundColor: '#00d4ff' }}
-        outerStyle={{ border: '1.5px solid rgba(0,212,255,0.6)', backgroundColor: 'transparent' }}
+        innerStyle={{ backgroundColor: '#2997ff', zIndex: 99999 }}
+        outerStyle={{ border: '1.5px solid rgba(41,151,255,0.6)', backgroundColor: 'transparent', zIndex: 99999 }}
       />
       <Navbar />
       <main>
